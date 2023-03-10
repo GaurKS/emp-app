@@ -42,7 +42,7 @@ export class EmployeeController {
    * @param employeeID 
    * @returns Promise<EmployeeEntity>
    */
-  @Get('/get/:id')
+  @Get(':id')
   async getEmployee(
     @Param('id') id: number
   ) {
@@ -55,7 +55,7 @@ export class EmployeeController {
    * @param updateEmployee: updateEmployeeDTO
    * @returns Promise<EmployeeEntity> 
    */
-  @Patch('/update/:id')
+  @Patch(':id')
   async updateEmployee(
     @Param('id') id: string,
     @Body() updateEmployee: updateEmployeeDTO,
@@ -68,7 +68,7 @@ export class EmployeeController {
    * @param id 
    * @returns Promise<EmployeeEntity> 
    */
-  @Delete('/delete/:id')
+  @Delete(':id')
   async deleteEmployee(
     @Param('id') id: string,
   ) { 

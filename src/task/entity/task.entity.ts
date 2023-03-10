@@ -15,6 +15,10 @@ export class TaskEntity {
   @Column()
   dueDate: Date;
 
-  // @ManyToOne(() => Employee, (employee) => employee.tasks)
-  // employee: Employee;
+  @ManyToOne(() => EmployeeEntity, (employee) => employee.tasks, {
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  employee: EmployeeEntity;
 }

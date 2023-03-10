@@ -21,6 +21,6 @@ export class EmployeeEntity {
   @Column()
   position: string;
 
-  // @OneToMany(() => Task, (task) => task.employee)
-  // tasks: Task[];
+  @OneToMany(() => TaskEntity, (task) => task.employee)
+  tasks: TaskEntity[];
 }
