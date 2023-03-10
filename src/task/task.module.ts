@@ -5,9 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskEntity } from './entity/task.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    TaskEntity
-  ])],
+  imports: [
+    TypeOrmModule.forFeature([
+      TaskEntity
+    ]),
+  ],
   controllers: [TaskController],
   providers: [TaskService]
 })

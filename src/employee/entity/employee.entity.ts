@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { TaskEntity } from '../../task/entity/task.entity';
 
 @Entity()
-export class Employee {
+export class EmployeeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
