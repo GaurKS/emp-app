@@ -4,7 +4,7 @@ import { EmployeeEntity } from '../../employee/entity/employee.entity';
 @Entity()
 export class TaskEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  taskId: number;
 
   @Column()
   title: string;
@@ -15,10 +15,10 @@ export class TaskEntity {
   @Column()
   dueDate: Date;
 
-  @ManyToOne(() => EmployeeEntity, (employee) => employee.tasks, {
+  @ManyToOne(() => EmployeeEntity, (assignee: EmployeeEntity) => assignee.tasks, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  employee: EmployeeEntity;
+  assignee: EmployeeEntity;
 }

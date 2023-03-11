@@ -38,7 +38,7 @@ export class EmployeeController {
   }
 
   /**
-   * Get a single employee
+   * Get a single employee by empId
    * @param employeeID 
    * @returns Promise<EmployeeEntity>
    */

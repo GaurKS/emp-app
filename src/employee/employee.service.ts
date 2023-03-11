@@ -20,11 +20,13 @@ export class EmployeeService {
   }
 
   async getEmployee(id: number) {
-    return await this.employeeRepository.findOne({
+    const employee = await this.employeeRepository.findOne({
       where: {
-        id,
+        empId: id,
       },
+      relations: ['tasks'],
     });
+    return employee;
   } 
 
   async updateEmployee(id: string, updateEmployee: updateEmployeeDTO) {  

@@ -4,7 +4,7 @@ import { TaskEntity } from '../../task/entity/task.entity';
 @Entity()
 export class EmployeeEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  empId: number;
 
   @Column()
   name: string;
@@ -21,6 +21,6 @@ export class EmployeeEntity {
   @Column()
   position: string;
 
-  @OneToMany(() => TaskEntity, (task) => task.employee)
+  @OneToMany(() => TaskEntity, (task: TaskEntity) => task.assignee)
   tasks: TaskEntity[];
 }

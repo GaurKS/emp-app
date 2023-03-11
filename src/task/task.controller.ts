@@ -39,7 +39,7 @@ export class TaskController {
   }
 
   /**
-   * Get a single task
+   * Get a single task by taskId
    * @param taskID 
    * @returns Promise<TaskEntity>
    */
@@ -58,7 +58,7 @@ export class TaskController {
    */
   @Patch(':id')
   async updateTask(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateTask: updateTaskDTO,
   ) {
     return this.taskService.updateTask(id, updateTask);
@@ -71,7 +71,7 @@ export class TaskController {
    */
   @Delete(':id')
   async deleteTask(
-    @Param('id') id: string,
+    @Param('id') id: number,
   ) { 
     return this.taskService.deleteTask(id);
   }
