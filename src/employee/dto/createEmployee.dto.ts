@@ -1,3 +1,5 @@
+// Description: Data Transfer Object (DTO) for creating a new employee
+
 import { 
   IsNotEmpty,
   IsString,
@@ -10,7 +12,7 @@ export class createEmployeeDTO {
   constructor(partial?: Partial<createEmployeeDTO>) {
     Object.assign(this, partial);
   }
-  
+
   @IsNotEmpty()
   @IsString()
   name: string;

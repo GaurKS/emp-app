@@ -1,3 +1,5 @@
+// TypeORM Entity for Employee
+
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { TaskEntity } from '../../task/entity/task.entity';
 

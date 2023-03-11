@@ -1,3 +1,5 @@
+// Description: DTO for updating an employee
+
 import { 
   IsString,
   IsEmail, 

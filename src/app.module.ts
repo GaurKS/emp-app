@@ -1,7 +1,10 @@
+// This is the main module of the application that imports all the other modules and 
+// exports them to be used by other modules in the application (src\app.module.ts)
+
 import { Module } from '@nestjs/common';
 import { EmployeeModule } from './employee/employee.module';
 import { TaskModule } from './task/task.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import * as Joi from '@hapi/joi';
 

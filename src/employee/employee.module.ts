@@ -1,3 +1,5 @@
+// Description: Employee module
+
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EmployeeEntity } from './entity/employee.entity';

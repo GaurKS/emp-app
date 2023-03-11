@@ -1,3 +1,5 @@
+// Description: This file contains the service for task module
+
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TaskEntity } from './entity/task.entity';
@@ -17,16 +19,20 @@ export class TaskService {
   ) {}
 
   async createTask(empID: number, task: createTaskDTO) {
+
+    // check if employee exists
     const employee = await this.employeeRepository.findOne({
       where: {
         empId: empID,
       },
     });
 
+    // if employee not found, throw an error
     if (!employee) {
-      throw new HttpException('Employee not found', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Invalid employee id', HttpStatus.BAD_REQUEST);
     }
     
+    // create a new task for the employee as assignee
     const newTask = await this.taskRepository.create({
       ...task,
       assignee: employee,
@@ -41,6 +47,8 @@ export class TaskService {
   }
 
   async getTasks() {
+
+    // get all tasks
     const tasks = await this.taskRepository.find();
     return {
       statusCode: 200,
@@ -50,14 +58,17 @@ export class TaskService {
   }
 
   async getTask(id: number) {
+
+    // get a task by id
     const task = await this.taskRepository.findOne({
       where: {
         taskId: id
       }
     });
 
+    // if task not found, throw an error
     if (!task) {
-      throw new HttpException('Task not found', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
     }
 
     return {
@@ -68,16 +79,20 @@ export class TaskService {
   }
 
   async updateTask(taskId: number, updateTask: updateTaskDTO) {
+
+    // get a task by id
     const task = await this.taskRepository.findOne({
       where: {
         taskId: taskId
       }
     });
 
+    // if task not found, throw an error
     if (!task) {
-      throw new HttpException('Task not found', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
     }
 
+    // update the task
     await this.taskRepository.update(taskId, updateTask);
     return {
       statusCode: 200,
@@ -91,16 +106,20 @@ export class TaskService {
   }
 
   async deleteTask(id: number) {
+
+    // get a task by id
     const task = await this.taskRepository.findOne({
       where: {
         taskId: id
       }
     });
-
+    
+    // if task not found, throw an error
     if (!task) {
-      throw new HttpException('Task not found', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
     }
 
+    // delete the task
     await this.taskRepository.delete(id);
     return {
       statusCode: 200,

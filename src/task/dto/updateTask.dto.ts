@@ -1,3 +1,5 @@
+// Description: DTO for updating a task
+
 import { 
   IsString,
   IsEmail, 

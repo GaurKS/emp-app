@@ -1,3 +1,5 @@
+// Description: Task Controller
+
 import { Controller } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { Body, Delete, Get, Param, Patch, Post } from '@nestjs/common/decorators';
@@ -12,8 +14,11 @@ export class TaskController {
    * @returns String
    */
   @Get('ping')
-  async ping(): Promise<String> {
-    return "Hey, Server is up and running..🚀";
+  async ping() {
+    return {
+      statusCode: 200,
+      message: "Hey, Server is up and running..🚀",
+    }
   }
 
   /**
@@ -21,7 +26,7 @@ export class TaskController {
    * @param newTask: createTaskDTO
    * @returns Promise<TaskEntity>
    */
-  @Post(':id/tasks')
+  @Post(':id')
   async createTask(
     @Param('id') empID: number,
     @Body() newTask: createTaskDTO,

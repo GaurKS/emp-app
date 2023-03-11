@@ -1,3 +1,5 @@
+// This is the entry point of the application (src\main.ts)
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 

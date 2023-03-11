@@ -1,3 +1,5 @@
+// Description: This file contains the controller for the employee module
+
 import { Controller } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { Body, Delete, Get, Param, Patch, Post } from '@nestjs/common/decorators';
@@ -12,8 +14,11 @@ export class EmployeeController {
    * @returns String
    */
   @Get('ping')
-  async ping(): Promise<String> {
-    return "Hey, Server is up and running..🚀";
+  async ping() {
+    return {
+      statusCode: 200,
+      message: "Hey, Server is up and running..🚀",
+    }
   }
 
   /**
@@ -57,7 +62,7 @@ export class EmployeeController {
    */
   @Patch(':id')
   async updateEmployee(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateEmployee: updateEmployeeDTO,
   ) {
     return this.employeeService.updateEmployee(id, updateEmployee);
@@ -70,7 +75,7 @@ export class EmployeeController {
    */
   @Delete(':id')
   async deleteEmployee(
-    @Param('id') id: string,
+    @Param('id') id: number,
   ) { 
     return this.employeeService.deleteEmployee(id);
   }
